@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="GitHub">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>
+        Probando la api de github
+    </title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="lib/jqueryui/themes/black-tie/jquery-ui.css"/>
+</head>
+<body ng-controller="PeticionAPI">
+<section>
+    <input type="text" my-autocomplete="reposAutocomplete" placeholder="Buscar repositorio"/>
+    <article>
+        <ul>
+            <li ng-repeat="repo in repos" ng-hide="repoSelected && repoSelected !== repo.name">
+                <strong>
+                    {{ repo.name }}:
+                </strong>
+                {{ repo.description }}
+            </li>
+        </ul>
+        <button ng-click="repoSelected = null">
+            Limpiar
+        </button>
+    </article>
+    <aside>
+        <figure>
+            <img ng-src="{{ user.avatar_url }}" alt=""/>
+            <figcaption>
+                {{ user.login }}
+            </figcaption>
+        </figure>
+        <p class="circle" bg-img="{{ user.avatar_url }}"></p>
+    </aside>
+</section>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/jqueryui/jquery-ui.js"></script>
+    <script src="ApiGitHubController.js"></script>
+</body>
+</html>
